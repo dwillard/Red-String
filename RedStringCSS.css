@@ -1,0 +1,59 @@
+.HeaderMenu {
+	display: inline-block;
+	margin: 10px 25px 10px 25px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	float: right;
+}
+
+#RSlogo {
+	display: block;
+	clear: both;
+	margin: auto;
+	padding: 20px;
+}
+
+.outer {
+	margin: auto;
+	height: 700px;
+	width: 700px;
+	text-align: center;
+}
+
+.inner {
+	height: 200px;
+	width: 200px;
+	display: inline-block;
+	margin: 10px;
+	background-color: #C0C0C0;
+}
+
+.inner:hover {
+	opacity: 0.4;
+}
+
+#Footer {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.75em;
+	width: 650px;
+	margin: auto;
+}
+
+#RSminilogo {
+	display: inline-block;
+	float: left;
+}
+
+a.about:link {
+    text-decoration: none;
+    color: black;
+}
+
+a.about:hover {
+    color: gray;
+}
+
+a.about:visited {
+    color: black;
+}

@@ -1,0 +1,94 @@
+.HeaderMenu {
+	display: inline-block;
+	margin: 10px 25px 10px 25px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	float: right;
+}
+
+#TPlogo {
+	display: block;
+	clear: both;
+	margin: auto;
+	padding: 20px;
+}
+
+#directions {
+	text-align: center;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.75em;
+}
+
+.styledSelect select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   font-family: Helvetica, Arial, sans-serif;
+   }
+
+.styledSelect {
+   width: 230px;
+   height: 30px;
+   overflow: hidden;
+   background: url(img/dropdown_arrow.png) no-repeat right #ffffff;
+   border: 2px solid black;
+   margin: auto;
+   margin-top: 10px;
+   }
+
+/*#dropDown {
+	display: block;
+	margin: auto;
+	margin-top: 20px;
+}*/
+
+.timeZoneBox {
+	margin: auto;
+	margin-top: 50px;
+	max-width: 700px;
+	text-align: center;
+
+}
+
+#localTime {
+	height: 200px;
+	width: 150px;
+	background-color: black;
+	display: inline-block;
+	margin: 10px;
+}
+
+#localTimeText {
+	height: 150px;
+	width: 150px;
+	background-color: black;
+}
+
+.emptyTime {
+	height: 200px;
+	width: 150px;
+	background-color: #C0C0C0;
+	display: inline-block;
+	margin: 10px;
+}
+
+.emptyTimeText {
+	height: 150px;
+	width: 150px;
+	background-color: #C0C0C0;
+}
+
+.triangle {
+	width: 0;
+	height: 0;
+	border-left: 75px solid transparent;
+	border-right: 75px solid transparent;
+	border-bottom: 50px solid white;
+}
