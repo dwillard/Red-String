@@ -5,20 +5,16 @@
 		<title> Red String </title>
 	</head>
 	<body>
-		
+
 		<div id="Header">
 			<a href="../RedString.html"><p class="HeaderMenu">Home</p></a>
 			<img src="img/timepiece_logo.png" id="TPlogo"/>
 		</div>
-		
+
 		<div class="body">
 			<div class="styledSelect">
 				<select id="dropDown">
 	  				<option value="0">Choose your next time zone.</option>
-	  				<option value="1">USA</option>
-	  				<option value="2">India</option>
-	  				<option value="3">Ecuador</option>
-	  				<option value="4">Japan</option>
 				</select>
 			</div>
 			<div class="timeZoneBox">
@@ -52,5 +48,9 @@
 				</div>
 			</div>
 		</div>
+
+    <!-- include scripts at the end of the body for performance reasons -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="timepiece.js"></script>
 	</body>
 </html>
