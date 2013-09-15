@@ -14,12 +14,6 @@
 	padding: 20px;
 }
 
-#directions {
-	text-align: center;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 0.75em;
-}
-
 .styledSelect select {
    background: transparent;
    width: 268px;
@@ -43,47 +37,25 @@
    margin-top: 10px;
    }
 
-/*#dropDown {
-	display: block;
-	margin: auto;
-	margin-top: 20px;
-}*/
-
-.timeZoneBox {
+.timeZoneBoxes {
 	margin: auto;
 	margin-top: 50px;
 	max-width: 700px;
 	text-align: center;
-
 }
 
-#localTime {
-	height: 200px;
-	width: 150px;
-	background-color: black;
+.timeZoneFlag {
 	display: inline-block;
+	vertical-align: top; 
+	height: 200px;
+	width: 150px;	
 	margin: 10px;
 }
 
-#localTimeText {
+.timeTextBox {
 	height: 150px;
 	width: 150px;
-	background-color: black;
-}
-
-.emptyTime {
-	height: 200px;
-	width: 150px;
-	background-color: #C0C0C0;
-	display: inline-block;
-	margin: 10px;
-}
-
-.emptyTimeText {
-	height: 150px;
-	width: 150px;
-	background-color: #C0C0C0;
-}
+} 
 
 .triangle {
 	width: 0;
@@ -91,4 +63,28 @@
 	border-left: 75px solid transparent;
 	border-right: 75px solid transparent;
 	border-bottom: 50px solid white;
+}
+
+.realTimeFlag {
+	background-color: black;
+	color: white;
+}
+
+.emptyTimeFlag {
+	background-color: #C0C0C0;
+}
+
+.timestamp {
+	margin:auto;
+	padding-top: 30px;
+	font-family: Bebas Neue, Helvetica, Arial, sans-serif;
+	font-size: 1.75em;
+}
+
+.locationstamp {
+	margin: auto;
+	padding-top: 20px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.9em;
+	text-transform: uppercase;
 }
