@@ -1,31 +1,21 @@
 $(function () {
-// use (new Date()).getTime() to get the UTC relative milliseconds since 1970.
 
-
-//Plan:
-//1. Display current time.
-
-console.log('loading js');
+// Plan:
+// 1. Display current time.
 
 function stringifyDate(date) {
-	return local_date.getFullYear() + " " + 
-	       local_date.getMonth() + " " + 
-	       local_date.getDate() + " " +
-	       local_date.getHours() + ":" +
-	       local_date.getMinutes() + ":" +
-	       local_date.getSeconds();
+	return date.getFullYear() + " " + 
+	       date.getMonth() + " " + 
+	       date.getDate() + " " +
+	       date.getHours() + ":" +
+	       date.getMinutes() + ":" +
+	       date.getSeconds();
 };
 
 var local_date = new Date();
 var date_string = stringifyDate(local_date);
 
-//2. Display list of timezones.
-
-// if user selects Pacific/Midway
-// then getUTCTime() in milliseconds,
-// HACK fake it to see if summer or winter, then pick the offset
-// apply offset to utc-time, and convert to date 
-// then get the 
+// 2. Display list of timezones.
 
 // Data repurposed from http://blog.redfin.com/devblog/2007/08/getting_the_time_zone_from_a_web_browser.html#.UjS5XGTwJSQ
 var timezones = [
@@ -346,14 +336,19 @@ var timezones = [
 	}
 ];
 
-var timezone_option = $('#dropDown');
+var timezone_select = $('#dropDown');
 for (var index in timezones) {
 	var timezone = timezones[index];
-	var zone_option = document.createElement('option');
-	zone_option.value = timezone.name;
-	zone_option.text = timezone.name + " (" + timezone.so + "," + timezone.wo + ")";
-	timezone_option.append(
-		zone_option
+	timezone_select.append(
+		$('<option>').attr('value', timezone.name).text(timezone.name)
 	);
 }
+
+// TODO savil
+// Plan for calculating time in selected timezone:
+// if user selects Pacific/Midway
+// then getUTCTime() in milliseconds,
+// See if summer or winter, then pick the offset
+// apply offset to utc-time, and convert to date 
+
 });
