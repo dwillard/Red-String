@@ -4,16 +4,13 @@ $(function () {
 // 1. Display current time.
 
 function stringifyDate(date) {
-	return date.getFullYear() + " " + 
-	       date.getMonth() + " " + 
-	       date.getDate() + " " +
-	       date.getHours() + ":" +
-	       date.getMinutes() + ":" +
-	       date.getSeconds();
+	return date.getHours() + ":" + date.getMinutes();
 };
 
 var local_date = new Date();
 var date_string = stringifyDate(local_date);
+
+$('.realTimeFlag').find('.timestamp').text(date_string);
 
 // 2. Display list of timezones.
 
@@ -336,6 +333,16 @@ var timezones = [
 	}
 ];
 
+var findTimezoneFromName = function (name) {
+	for (var index in timezones) {
+		var timezone = timezones[index];
+		if (timezone.name === name) {
+			return timezone;
+		}
+	}
+	return null;
+};
+
 var timezone_select = $('#dropDown');
 for (var index in timezones) {
 	var timezone = timezones[index];
@@ -344,11 +351,37 @@ for (var index in timezones) {
 	);
 }
 
-// TODO savil
 // Plan for calculating time in selected timezone:
 // if user selects Pacific/Midway
 // then getUTCTime() in milliseconds,
 // See if summer or winter, then pick the offset
 // apply offset to utc-time, and convert to date 
+var getDateInTimezone = function (timezone) {
+	var local_date = new Date();
+	var current_utc_time_ms = local_date.getTime() + local_date.getTimezoneOffset() * 60 * 1000;
+
+	// TODO this is very hacky.
+	var is_summer = local_date.getMonth() > 3 && local_date.getMonth() < 10;
+
+	var offset =  is_summer ? timezone.so : timezone.wo;
+	var time_in_timezone_ms = current_utc_time_ms + offset * 60 * 1000;
+	var date_in_timezone = new Date(time_in_timezone_ms);
+	return date_in_timezone;
+};
+
+var addNewTimezoneBox = function (timezone) {
+	var date_in_timezone = getDateInTimezone(timezone);
+	var new_timezone_box = $('.realTimeFlag').first().clone();
+	new_timezone_box.find('.timestamp').first().text(stringifyDate(date_in_timezone));
+	new_timezone_box.find('.locationstamp').first().text(timezone.name);
+	$('.realTimeFlag').last().after(new_timezone_box);
+};
+
+timezone_select.change(function (e) {
+	var selected_name = timezone_select.find('option:selected').val();
+	var selected_timezone = findTimezoneFromName(selected_name);
+	addNewTimezoneBox(selected_timezone);
+});
+
 
 });
