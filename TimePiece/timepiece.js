@@ -455,5 +455,4 @@ var initTimezoneBoxes = function () {
 
 }
 initTimezoneBoxes();
-
 });
