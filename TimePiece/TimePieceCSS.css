@@ -74,6 +74,14 @@
 	background-color: #C0C0C0;
 }
 
+.deleteX {
+	float: right;
+	padding: 5px 10px;
+	font-family: Helvetica, Arial, sans-serif;
+	display: none;
+      cursor: pointer;
+}
+
 .timestamp {
 	margin:auto;
 	padding-top: 30px;
