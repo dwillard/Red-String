@@ -372,16 +372,24 @@ var getDateInTimezone = function (timezone) {
 
 var addNewTimezoneBox = function (timezone) {
 	var date_in_timezone = getDateInTimezone(timezone);
-  var timezone_boxes = $('.realTimeFlag');
+  	var timezone_boxes = $('.realTimeFlag');
 	var new_timezone_box = timezone_boxes.first().clone();
 	new_timezone_box
-    .find('.timestamp')
-    .first()
-    .text(
-      stringifyDate(date_in_timezone)
-    );
+	    	.find('.timestamp')
+	    	.first()
+	    	.text(
+	      	stringifyDate(date_in_timezone)
+	    	);
 	new_timezone_box.find('.locationstamp').first().text(timezone.name);
 	timezone_boxes.last().after(new_timezone_box);
+	new_timezone_box.hover(
+		function(event) {
+			new_timezone_box.find(".deleteX").toggle();
+		}
+	);
+	new_timezone_box.find(".deleteX").click(function() {
+		new_timezone_box.remove();
+	});
 };
 
 timezone_select.change(function (e) {
@@ -389,6 +397,5 @@ timezone_select.change(function (e) {
 	var selected_timezone = findTimezoneFromName(selected_name);
 	addNewTimezoneBox(selected_timezone);
 });
-
 
 });
