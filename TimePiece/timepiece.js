@@ -451,9 +451,22 @@ var updateBoxTime = function() {
 
 setInterval (
 	function() {
-		$('.realTimeFlag').each(updateBoxTime);	
-	}, 
+		$('.realTimeFlag').each(updateBoxTime);
+	},
 	60000 // one minute in ms
 );
 
+var initTimezoneBoxes = function () {
+	var timezone_names = localStorage.getItem(TIMEZONES_LOCALSTORAGE_KEY);
+	timezone_names = timezone_names ? JSON.parse(timezone_names) : {};
+
+	for (var timezone_name in timezone_names) {
+		if (timezone_names.hasOwnProperty(timezone_name)) {
+			var timezone = findTimezoneFromName(timezone_name);
+			addNewTimezoneBox(timezone);
+		}
+	}
+
+}
+initTimezoneBoxes();
 });
