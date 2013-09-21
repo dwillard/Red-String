@@ -1,5 +1,7 @@
 $(function () {
 
+var TIMEZONES_LOCALSTORAGE_KEY = 'tp_timezones';
+
 // Plan:
 // 1. Display current time.
 
@@ -357,6 +359,22 @@ for (var index in timezones) {
 	);
 }
 
+var appendTimezoneNameToLocalStorage = function(timezone_name) {
+	var timezones = localStorage.getItem(TIMEZONES_LOCALSTORAGE_KEY);
+	timezones = timezones ? JSON.parse(timezones) : {};
+	timezones[timezone_name] = timezone_name;
+	localStorage.setItem(TIMEZONES_LOCALSTORAGE_KEY, JSON.stringify(timezones));
+}
+
+var removeTimezoneNameFromLocalStorage = function(timezone_name) {
+	var timezones = localStorage.getItem(TIMEZONES_LOCALSTORAGE_KEY);
+	timezones = timezones ? JSON.parse(timezones) : {};
+	if (timezones.hasOwnProperty(timezone_name)) {
+			delete timezones[timezone_name];
+	}
+	localStorage.setItem(TIMEZONES_LOCALSTORAGE_KEY, JSON.stringify(timezones));
+}
+
 // Plan for calculating time in selected timezone:
 // if user selects Pacific/Midway
 // then getUTCTime() in milliseconds,
@@ -395,7 +413,9 @@ var addNewTimezoneBox = function (timezone) {
 	);
 	new_timezone_box.find(".deleteX").click(function() {
 		new_timezone_box.remove();
+		removeTimezoneNameFromLocalStorage(timezone.name);
 	});
+	appendTimezoneNameToLocalStorage(timezone.name);
 };
 
 timezone_select.change(function () {
@@ -417,9 +437,22 @@ var updateBoxTime = function() {
 
 setInterval (
 	function() {
-		$('.realTimeFlag').each(updateBoxTime);	
-	}, 
+		$('.realTimeFlag').each(updateBoxTime);
+	},
 	60000 // one minute in ms
 );
 
+var initTimezoneBoxes = function () {
+	var timezone_names = localStorage.getItem(TIMEZONES_LOCALSTORAGE_KEY);
+	timezone_names = timezone_names ? JSON.parse(timezone_names) : {};
+
+	for (var timezone_name in timezone_names) {
+		if (timezone_names.hasOwnProperty(timezone_name)) {
+			var timezone = findTimezoneFromName(timezone_name);
+			addNewTimezoneBox(timezone);
+		}
+	}
+
+}
+initTimezoneBoxes();
 });
