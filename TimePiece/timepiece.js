@@ -17,7 +17,6 @@ function stringifyDate(date) {
 
 var local_date = new Date();
 var date_string = stringifyDate(local_date);
-console.log(date_string);
 
 $('.realTimeFlag').find('.timestamp').text(date_string);
 
@@ -457,21 +456,4 @@ var initTimezoneBoxes = function () {
 }
 initTimezoneBoxes();
 
-var updateBoxTime = function() {
-	var box = $(this);
-	var boxLocation = box.find('.locationstamp').text();
-	var boxTimezone = findTimezoneFromName(boxLocation);
-	var boxTime = new Date();
-	if (boxTimezone !== null) {
-		boxTime = getDateInTimezone(boxTimezone);
-	}
-	box.find('.timestamp').text(stringifyDate(boxTime));
-	console.log("done!");
-};
-
-var updateAllBoxTimes = function() {
-	$('.realTimeFlag').each(updateBoxTime);
-};
-
-setInterval (updateAllBoxTimes, 60000);
 });
