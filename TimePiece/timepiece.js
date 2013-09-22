@@ -4,7 +4,13 @@ $(function () {
 // 1. Display current time.
 
 function stringifyDate(date) {
-	return date.getHours() + ":" + date.getMinutes();
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	minutes = (minutes < 10 ? "0" : "") + minutes;
+	var timeOfDay = (hours < 12) ? "AM" : "PM";
+	hours = (hours > 12) ? hours - 12 : hours;
+	hours = (hours === 0) ? 12 : hours;
+	return hours + ":" + minutes + " " + timeOfDay;
 };
 
 var local_date = new Date();
@@ -17,317 +23,317 @@ $('.realTimeFlag').find('.timestamp').text(date_string);
 // Data repurposed from http://blog.redfin.com/devblog/2007/08/getting_the_time_zone_from_a_web_browser.html#.UjS5XGTwJSQ
 var timezones = [
 	{
-		name: 'Pacific/Marquesas',
+		name: 'Pacific / Marquesas',
 		so: -570,
 		wo: -570
 	},
 	{
-		name: 'America/Adak',
+		name: 'America / Adak',
 		so: -540,
 		wo: -600
 	},
 	{
-		name: 'Pacific/Gambier',
+		name: 'Pacific / Gambier',
 		so: -540,
 		wo: -540
 	},
 	{
-		name: 'US/Alaska',
+		name: 'US / Alaska',
 		so: -480,
 		wo: -540
 	},
 	{
-		name: 'Pacific/Pitcairn',
+		name: 'Pacific / Pitcairn',
 		so: -480,
 		wo: -480
 	},
 	{
-		name: 'US/Pacific',
+		name: 'US / Pacific',
 		so: -420,
 		wo: -480
 	},
 	{
-		name: 'US/Arizona',
+		name: 'US / Arizona',
 		so: -420,
 		wo: -420
 	},
 	{
-		name: 'US/Mountain',
+		name: 'US / Mountain',
 		so: -360,
 		wo: -420
 	},
 	{
-		name: 'America/Guatemala',
+		name: 'America / Guatemala',
 		so: -360,
 		wo: -360
 	},
 	{
-		name: 'Pacific/Easter',
+		name: 'Pacific / Easter',
 		so: -360,
 		wo: -300
 	},
 	{
-		name: 'US/Central',
+		name: 'US / Central',
 		so: -300,
 		wo: -360
 	},
 	{
-		name: 'America/Bogota',
+		name: 'America / Bogota',
 		so: -300,
 		wo: -300
 	},
 	{
-		name: 'US/Eastern',
+		name: 'US / Eastern',
 		so: -240,
 		wo: -300
 	},
 	{
-		name: 'America/Caracas',
+		name: 'America / Caracas',
 		so: -240,
 		wo: -240
 	},
 	{
-		name: 'America/Santiago',
+		name: 'America / Santiago',
 		so: -240,
 		wo: -180
 	},
 	{
-		name: 'Canada/Atlantic',
+		name: 'Canada / Atlantic',
 		so: -180,
 		wo: -240
 	},
 	{
-		name: 'America/Montevideo',
+		name: 'America / Montevideo',
 		so: -180,
 		wo: -180
 	},
 	{
-		name: 'America/Sao_Paulo',
+		name: 'America / Sao Paulo',
 		so: -180,
 		wo: -120
 	},
 	{
-		name: 'America/St_Johns',
+		name: 'America / St Johns',
 		so: -150,
 		wo: -210
 	},
 	{
-		name: 'America/Godthab',
+		name: 'America / Godthab',
 		so: -120,
 		wo: -180
 	},
 	{
-		name: 'America/Noronha',
+		name: 'America / Noronha',
 		so: -120,
 		wo: -120
 	},
 	{
-		name: 'Atlantic/Cape_Verde',
+		name: 'Atlantic / Cape Verde',
 		so: -60,
 		wo: -60
 	},
 	{
-		name: 'Atlantic/Azores',
+		name: 'Atlantic / Azores',
 		so: 0,
 		wo: -60
 	},
 	{
-		name: 'Africa/Casablanca',
+		name: 'Africa / Casablanca',
 		so: 0,
 		wo: 0
 	},
 	{
-		name: 'Europe/London',
+		name: 'Europe / London',
 		so: 60,
 		wo: 0
 	},
 	{
-		name: 'Africa/Algiers',
+		name: 'Africa / Algiers',
 		so: 60,
 		wo: 60
 	},
 	{
-		name: 'Africa/Windhoek',
+		name: 'Africa / Windhoek',
 		so: 60,
 		wo: 120
 	},
 	{
-		name: 'Europe/Amsterdam',
+		name: 'Europe / Amsterdam',
 		so: 120,
 		wo: 60
 	},
 	{
-		name: 'Africa/Harare',
+		name: 'Africa / Harare',
 		so: 120,
 		wo: 120
 	},
 	{
-		name: 'Europe/Athens',
+		name: 'Europe / Athens',
 		so: 180,
 		wo: 120
 	},
 	{
-		name: 'Africa/Nairobi',
+		name: 'Africa / Nairobi',
 		so: 180,
 		wo: 180
 	},
 	{
-		name: 'Europe/Moscow',
+		name: 'Europe / Moscow',
 		so: 240,
 		wo: 180
 	},
 	{
-		name: 'Asia/Dubai',
+		name: 'Asia / Dubai',
 		so: 240,
 		wo: 240
 	},
 	{
-		name: 'Asia/Tehran',
+		name: 'Asia / Tehran',
 		so: 270,
 		wo: 210
 	},
 	{
-		name: 'Asia/Kabul',
+		name: 'Asia / Kabul',
 		so: 270,
 		wo: 270
 	},
 	{
-		name: 'Asia/Baku',
+		name: 'Asia / Baku',
 		so: 300,
 		wo: 240
 	},
 	{
-		name: 'Asia/Karachi',
+		name: 'Asia / Karachi',
 		so: 300,
 		wo: 300
 	},
 	{
-		name: 'Asia/Calcutta',
+		name: 'Asia / Calcutta',
 		so: 330,
 		wo: 330
 	},
 	{
-		name: 'Asia/Katmandu',
+		name: 'Asia / Katmandu',
 		so: 345,
 		wo: 345
 	},
 	{
-		name: 'Asia/Yekaterinburg',
+		name: 'Asia / Yekaterinburg',
 		so: 360,
 		wo: 300
 	},
 	{
-		name: 'Asia/Colombo',
+		name: 'Asia / Colombo',
 		so: 360,
 		wo: 360
 	},
 	{
-		name: 'Asia/Rangoon',
+		name: 'Asia / Rangoon',
 		so: 390,
 		wo: 390
 	},
 	{
-		name: 'Asia/Almaty',
+		name: 'Asia / Almaty',
 		so: 420,
 		wo: 360
 	},
 	{
-		name: 'Asia/Bangkok',
+		name: 'Asia / Bangkok',
 		so: 420,
 		wo: 420
 	},
 	{
-		name: 'Asia/Krasnoyarsk',
+		name: 'Asia / Krasnoyarsk',
 		so: 480,
 		wo: 420
 	},
 	{
-		name: 'Australia/Perth',
+		name: 'Australia / Perth',
 		so: 480,
 		wo: 480
 	},
 	{
-		name: 'Asia/Irkutsk',
+		name: 'Asia / Irkutsk',
 		so: 540,
 		wo: 480
 	},
 	{
-		name: 'Asia/Tokyo',
+		name: 'Asia / Tokyo',
 		so: 540,
 		wo: 540
 	},
 	{
-		name: 'Australia/Darwin',
+		name: 'Australia / Darwin',
 		so: 570,
 		wo: 570
 	},
 	{
-		name: 'Australia/Adelaide',
+		name: 'Australia / Adelaide',
 		so: 570,
 		wo: 630
 	},
 	{
-		name: 'Asia/Yakutsk',
+		name: 'Asia / Yakutsk',
 		so: 600,
 		wo: 540
 	},
 	{
-		name: 'Australia/Brisbane',
+		name: 'Australia / Brisbane',
 		so: 600,
 		wo: 600
 	},
 	{
-		name: 'Australia/Sydney',
+		name: 'Australia / Sydney',
 		so: 600,
 		wo: 660
 	},
 	{
-		name: 'Australia/Lord_Howe',
+		name: 'Australia / Lord Howe',
 		so: 630,
 		wo: 660
 	},
 	{
-		name: 'Asia/Vladivostok',
+		name: 'Asia / Vladivostok',
 		so: 660,
 		wo: 600
 	},
 	{
-		name: 'Pacific/Guadalcanal',
+		name: 'Pacific / Guadalcanal',
 		so: 660,
 		wo: 660
 	},
 	{
-		name: 'Pacific/Norfolk',
+		name: 'Pacific / Norfolk',
 		so: 690,
 		wo: 690
 	},
 	{
-		name: 'Asia/Magadan',
+		name: 'Asia / Magadan',
 		so: 720,
 		wo: 660
 	},
 	{
-		name: 'Pacific/Fiji',
+		name: 'Pacific / Fiji',
 		so: 720,
 		wo: 720
 	},
 	{
-		name: 'Pacific/Auckland',
+		name: 'Pacific / Auckland',
 		so: 720,
 		wo: 780
 	},
 	{
-		name: 'Pacific/Chatham',
+		name: 'Pacific / Chatham',
 		so: 765,
 		wo: 825
 	},
 	{
-		name: 'Pacific/Enderbury',
+		name: 'Pacific / Enderbury',
 		so: 780,
 		wo: 780
 	},
 	{
-		name: 'Pacific/Kiritimati',
+		name: 'Pacific / Kiritimati',
 		so: 840,
 		wo: 840
 	}
@@ -392,10 +398,28 @@ var addNewTimezoneBox = function (timezone) {
 	});
 };
 
-timezone_select.change(function (e) {
+timezone_select.change(function () {
 	var selected_name = timezone_select.find('option:selected').val();
 	var selected_timezone = findTimezoneFromName(selected_name);
 	addNewTimezoneBox(selected_timezone);
 });
+
+var updateBoxTime = function() {
+	var box = $(this);
+	var boxLocation = box.find('.locationstamp').text();
+	var boxTimezone = findTimezoneFromName(boxLocation);
+	var boxTime = new Date();
+	if (boxTimezone !== null) {
+		boxTime = getDateInTimezone(boxTimezone);
+	}
+	box.find('.timestamp').text(stringifyDate(boxTime));
+};
+
+setInterval (
+	function() {
+		$('.realTimeFlag').each(updateBoxTime);	
+	}, 
+	60000 // one minute in ms
+);
 
 });
