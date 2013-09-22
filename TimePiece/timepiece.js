@@ -6,16 +6,15 @@ $(function () {
 function stringifyDate(date) {
 	var hours = date.getHours();
 	var minutes = date.getMinutes();
-	minutes = ( minutes <10 ? "0" : "") + minutes;
-	var timeOfDay = ( hours < 12) ? "AM" : "PM";
-	hours = ( hours > 12) ? hours - 12 : hours;
-	hours = ( hours ===0) ? 12 : hours;
+	minutes = (minutes < 10 ? "0" : "") + minutes;
+	var timeOfDay = (hours < 12) ? "AM" : "PM";
+	hours = (hours > 12) ? hours - 12 : hours;
+	hours = (hours === 0) ? 12 : hours;
 	return hours + ":" + minutes + " " + timeOfDay;
 };
 
 var local_date = new Date();
 var date_string = stringifyDate(local_date);
-console.log(date_string);
 
 $('.realTimeFlag').find('.timestamp').text(date_string);
 
@@ -399,7 +398,7 @@ var addNewTimezoneBox = function (timezone) {
 	});
 };
 
-timezone_select.change(function (e) {
+timezone_select.change(function () {
 	var selected_name = timezone_select.find('option:selected').val();
 	var selected_timezone = findTimezoneFromName(selected_name);
 	addNewTimezoneBox(selected_timezone);
@@ -414,13 +413,13 @@ var updateBoxTime = function() {
 		boxTime = getDateInTimezone(boxTimezone);
 	}
 	box.find('.timestamp').text(stringifyDate(boxTime));
-	console.log("done!");
 };
 
-var updateAllBoxTimes = function() {
-	$('.realTimeFlag').each(updateBoxTime);
-};
-
-setInterval (updateAllBoxTimes, 60000);
+setInterval (
+	function() {
+		$('.realTimeFlag').each(updateBoxTime);	
+	}, 
+	60000 // one minute in ms
+);
 
 });
