@@ -447,9 +447,11 @@ var initTimezoneBoxes = function () {
 	timezone_names = timezone_names ? JSON.parse(timezone_names) : {};
 
 	for (var timezone_name in timezone_names) {
-		if (timezone_names.hasOwnProperty(timezone_name)) {
-			var timezone = findTimezoneFromName(timezone_name);
+		var timezone = findTimezoneFromName(timezone_name);
+		if (timezone !== null) {
 			addNewTimezoneBox(timezone);
+		} else {
+			console.log('WARNING: missing timezone with name: ' + name);
 		}
 	}
 
