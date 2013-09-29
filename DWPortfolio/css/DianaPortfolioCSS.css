@@ -1,0 +1,131 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.75em;
+}
+
+#Header {
+	text-align: right;
+}
+
+.HeaderMenu {
+	display: inline-block;
+	padding: 10px 20px;
+	letter-spacing: 2px;
+	text-transform: uppercase;	
+}
+
+#logoHeader {
+	margin: auto;
+	width: 300px;
+}
+
+#DWlogo {
+	display: block;
+	clear: both;
+	margin: auto;
+	padding: 50px;
+}
+
+.hiddendisplay {
+	margin: auto;
+	width: 700px;
+}
+
+#paintingdisplay {
+	height: 630px;
+	width: 450px;
+	margin: 10px ;
+	float: left;
+}
+
+#paintingtitle {
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	padding-top: 20px;
+}
+
+#paintingdescription {
+	text-transform: uppercase;
+	clear: right;
+	letter-spacing: 1px;
+}
+
+.outer {
+	margin: auto;
+	height: 700px;
+	width: 1000px;
+	text-align: center;
+	clear: both;
+}
+
+.inner {
+	height: 200px;
+	width: 200px;
+	display: inline-block;
+	margin: 10px;
+}
+
+.inner:hover {
+	opacity: 0.4;
+}
+
+#outerSlider {
+	width: 100%;
+	overflow: scroll;
+}
+
+#innerSlider {
+	width: 4250px;
+}
+
+.sliderImg {
+	margin: 10px;
+	display: inline-block;
+}
+
+#homeLine {
+	margin-top: 100px;
+}
+
+#portfolioLine {
+	margin-top: 500px;
+}
+
+.about {
+	width: 800px;
+	margin: auto;
+	margin-top: 10px;
+}
+
+#profilepic {
+	float: left;
+	padding-top: 10px;
+}
+
+#bio {
+	float: right;
+	width: 680px;
+}
+
+.Footer {
+	text-align: center;
+	font-size: 0.5em;
+	text-transform: uppercase;
+	clear: both;
+	margin: auto;
+	padding-top: 10px;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    opacity: 0.4;
+}
+
+a:visited {
+    color: black;
+}
